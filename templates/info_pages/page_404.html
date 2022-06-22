@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <!-- <link rel="stylesheet" href="{% static 'css/info_pages.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/404_page_style.css' %}">
+{% endblock head_content %}
+
+{% block nav_links %}
+<li class="link-item"><a href="{% url 'home_page' %}">domov</a></li>    <!--on-page id must be here!!!!-->
+<li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+<li class="link-item"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+<li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item-fix"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+
+  <style>
+    body{
+      background-image: url({% static 'images/beekeeper-4426003_1920.jpg' %});
+    }
+  </style>
+
+  <main>
+    <section class="main-sec">
+      <div id="grid-sec">
+        <div class="left-side">
+          <div class="wrapper">
+            <div class="title-wrap">
+              <h1>Oops...</h1>
+              
+            </div>
+            <div class="text__div">
+              <h3>vyhľadávaná stránka sa nenašla</h3>
+              <p>Zdá sa že stránka ktorú hladáte neexistuje alebo ste nepovolili používanie súborov cookies.</p>
+              <a href="{% url 'home_page' %}">vrátit sa späť na HomePage</a>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="right-side">
+          <div class="wrapper">
+            <h1 class="err-title">404 <span>error</span></h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="plug-wrapper">
+
+        <div class="css-plug-wrapper">
+
+          <div class="fire f1"></div>
+          <div class="fire f2"></div>
+          <div class="fire f3"></div>
+
+          <div class="strips__wrapper">
+            <div class="strip s1"></div>
+            <div class="strip s2"></div>
+          </div>
+          <div class="plug__head"></div>
+          <div class="plug__body"></div>
+        </div>
+
+      </div> -->
+    </section>
+  </main>
+
+{% endblock content %}

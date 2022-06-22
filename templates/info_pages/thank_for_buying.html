@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/info_pages.css' %}">
+{% endblock head_content %}
+
+{% block nav_links %}
+<li class="link-item"><a href="{% url 'home_page' %}">domov</a></li>    <!--on-page id must be here!!!!-->
+<li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+<li class="link-item"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+<li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item-fix"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+
+  <style>
+    body{
+      background-image: url({% static 'images/beekeeper-4426003_1920.jpg' %});
+    }
+  </style>
+
+  <main>
+    <section class="main-sec">
+      <div class="email-box">
+        <div class="text-wrappepr">
+          <h1 class="main-title">Ďakujeme za objednávku</h1>
+          <p class="info-about-order">Prijali sme od vás email so žiadosťou o kúpu produktov, ktoré ste si vybrali. V nasledujúcich dňoch vás budeme kontaktovať prostredníctvom emailu, aby sme sa dohodli na pladbe a odbere.</p>
+        </div>  
+        <a href="{% url 'home_page' %}" class="btn">späť na stránku</a>
+      </div>
+    </section>
+  </main>
+
+{% endblock content %}

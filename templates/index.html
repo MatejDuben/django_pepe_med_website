@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load static %}
+<!-- individual styles links -->
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/home_page/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/home_page/style_responsive.css' %}">
+
+  <!--google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+{% endblock head_content %}
+<!-- main links -->
+{% block nav_links %}
+  <li class="link-item"><a id="on-page" href="{% url 'home_page' %}">domov</a></li>    <!--on-page id must be here!!!!-->
+  <li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+  
+  <!--<li class="link-item"><a href="#">o nás</a></li>-->
+{% endblock nav_links %}
+<!-- links on fixed section -->
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a id="on-page-fix" href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item-fix"><a href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+<!--Main content-->
+{% block content %}
+<header>
+    
+
+
+  <section class="hero-img-sec">
+    <div class="img-wrapper">
+      <!-- <img src="{% static 'images/vcely_cesta.jpg' %}" alt="" id="hero-img"> -->
+      <img src="{% static 'images/luka_plna_medu.jpg' %}" alt="" id="hero-img">
+      <!-- <img src="{% static 'images/hero_img2.jpg' %}" alt="" id="hero-img"> -->
+    </div>
+
+    <!-- <div class="title-wrapper">
+      <h1>Vitajte na mojej stránke!</h1>
+      <p>
+        Volám sa Peter, včelárim už vela rokov. Ak máte záujem o domáci med, môžete ma kontaktovať alebo si ho prostrednictvom tejto stránky zakúpiť.
+      </p>
+    </div> -->
+
+    <div class="title-wrapper">
+      <h1 class="main__title">Včelie produkty od domáceho včelára</h1>
+      
+      <h3 class="subtitle">včelie produkty, apiterapia, predaj úľov na mieru</h3>
+    
+      <p class="info-text">Včeláreniu sa venujem už dobrých pár rokov, včely mám na rôznych miestach Slovenska aby bol medík pestrý a vždy iný. Na tejto stránke chcem predstaviť med a iné včelie produkty ktoré ponúkam, možnosť využiť apidomček pre apiterapiu a taktiež pre začinajúcich včelárov ponúkam možnosť zakúpiť si u mňa kvalitne vyrobený Váš prvý včelý úľ.</p>
+        
+
+      <div class="pepe-sign">
+        <img src="{% static 'images/pepe_bee.png' %}" alt="">
+      </div>
+
+    </div>
+
+    
+
+    <div class="quote__sec">
+      <div class="quote__line-wrapper">
+        <!-- <span class="q1 q">„</span> -->
+        <p id="quote" class="quote "> Propolis </p>
+        <!-- <span class="q2 q">“</span> -->
+      </div>
+
+      <small class="author" id="quote-author">- včelie lepidlo živicového pôvodu s antibakteriálnymi účinkami</small>
+    </div>
+
+
+  </section>
+
+</header>
+
+<main>
+  <section class="main-wrapper">
+    
+    <div class="cards-box-wrapper">
+      <ul class="cards-box">
+        <li class="card">
+          <div class="card-wrapper">
+            <h1>Naše produkty</h1>
+            
+            <p>
+              - Rôzne druhy medu <br>
+              - Sviečky <br>
+              - Propolis <br>
+              - Drevené Betlehemy <br>
+              - Apiterapia (dýchanie včelieho vzduchu)
+            </p>
+          </div>
+          
+        </li>
+        <li class="card">
+          <div class="card-wrapper">
+            <h1>Kvalitný medík</h1>
+            
+            <p >
+              Med je viskózna sladká a lepkavá tekutina, ktorú vytvárajú včely zberom a zahusťovaním sladkých štiav – predovšetkým nektáru kvetov. Zloženie medu závisí najviac od zmesi kvetov navštívených včelami, ktoré med produkovali a líši sa podľa lokality, obdobia, sezóny a jednotlivých včelstiev. 
+            </p>
+          </div>
+        </li>
+        <li class="card">
+          <div class="card-wrapper">
+            <h1>Záujem ?</h1>
+            
+            <p>
+              V prípade záujmu o naše produkty nám napíšte, zavolajte alebo nás navštívte. Viac informácii najdete <a href="{% url 'contact_page' %}">tu</a>
+            </p>
+          </div>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="line up"></div>      
+    <h1 class="title">Naše včely sú na prírodných miestach !</h1>
+
+    <!--main-info-section-->
+  
+    <section class="main-info-sec">
+      <div class="wrapper-to-flex-row">
+        <div class="main-info-box box-left">
+
+        </div>
+        <div class="about-box">
+          <h1 class="title title-set-left">Lúka plná medu !</h1>
+          <p class="info">
+            Pre včelstvo je med zásobou energeticky bohatej potravy. Počas roka silné včelstvo vyrobí a z väčšej časti i spotrebuje rádovo stovky kilogramov medu. Na prečkanie zimy včelstvu stačí približne 1 kg na mesiac. Med sa nekazí. Vďaka vysokému obsahu cukru ničí baktérie.
+          </p>
+
+        </div>
+      </div>
+      
+      <div class="wrapper-to-flex-row display-none">
+        <div class="main-info-box responsive"></div>
+        <div class="about-box">
+          <h1 class="title title-set-center">Život našich včiel počas roka.</h1>
+          <p class="info info-set-center">
+            Donut powder tart danish dragée. Liquorice cake chupa chups muffin apple pie wafer liquorice marshmallow cookie. Chocolate bar brownie halvah toffee powder marshmallow jelly-o candy.
+          </p>
+
+        </div>
+        <div class="main-info-box box-right">
+
+        </div>
+      </div>
+
+  
+
+
+    </section>
+  
+
+    <!--APITERAPIA SECTION-->
+    <h1 class="title api">Už ste skúsili apiterapiu ?</h1>
+    <div class="line api"></div>
+    <figure class="api-img-wrapper">
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="{% static 'images/apiDom.jpg' %}" class="api-img" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'images/apiDom_dnu1.jpg' %}" class="api-img" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'images/apiDom_dnu2.jpg' %}" class="api-img" alt=""></div>
+          <div class="swiper-slide"><img src="{% static 'images/apiDom_zboku.jpg' %}" class="api-img" alt=""></div>
+          
+          
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+
+    
+      <figcaption>
+        <span id="api-info-title">Čo je Apiterapia ?</span> Ide o liečebno-relaxačnú terapiu v špeciálnom drevenom domčeku. Na úľoch vyskladaných ako posteľ sa leží a počas terapie sa dýcha príjemné teplo, ktoré produkujú včely. Počas celej terapie v api-domčeku nedochádza ku priamemu kontaktu so včelami, pretože tie majú umožnený bežný pobyt mimo domček. Odporúča sa ležať v rozsahu 25 až 30 minút. 
+        Dýchanie včelieho vzduchu je terapia, ktorá využíva liečivý vzduch v úli a priamo ten sa inhaluje. Dýchanie je najjednoduchšou a zároveň najprirodzenejšou cestou, ako sa dostane účinná látka veľmi rýchlo do krvného obehu. K dispozícii od mája do konca septembra.
+      </figcaption>
+    </figure>
+
+    <div class="api-cards-box-wrapper">
+      <ul class="api-cards-box">
+        <li class="card-api">
+          <div class="card-wrapper-api">
+            <div class="card-content-wrapper set-center">
+              <h1 class="card-title">Vzduch v úli</h1>
+              <p class="card-content">
+                Vzduch v úli obsahuje vysokú vlhkosť, éterické oleje, tekuté voskové čiastočky, slinný sekrét včiel, aerosóly z flavonoidov a propolisu, stopové prvky, enzýmy, cholín, včelami vyprodukované rastlinné hormóny a dosahuje teplotu okolo 36 °C.
+              </p>
+            </div>
+          </div>
+        </li>
+        <li class="card-api">
+          <div class="card-wrapper-api">
+            <div class="card-content-wrapper middle">
+              <h1 class="card-title">Naša apiterapia</h1>
+              <p class="card-content">
+                Našu apiterapiu mozeťe skúsiť kedykolvek. Staci nam zavolat a objednat sa, mozete prist uz aj v ten den ! Apiterapia u nas stoju 7eur za 10min. 
+              </p>
+            </div>
+            <a href="" class="btn" id="order-btn">Objednať sa</a>
+          </div>
+        </li>
+        <li class="card-api">
+          <div class="card-wrapper-api">
+            <div class="card-content-wrapper set-center">
+              <h1 class="card-title">Mate jeden z tychto problemov ? </h1>
+              <p class="card-content">
+                Pobyt v api-domčeku pomôže keď vás trápi: alergia, arytmia srdca, astma, bolesti kĺbov a chrbta, bronchitída, depresie, chronické zápaly, liečba zlomenín, liečba vysokého a nízkeho krvného tlaku, migrény a iné bolesti hlavy, náchylnosti k infekciám, oslabenie imunity, pooperačné stavy.
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--CONTACT section-->
+    <section class="contact-sec" id="main-contact">
+      <h1 class="title">Pre akúkoľvek otázku ma <br> môžete <a href="{% url 'contact_page' %}" id="contact-link">kontaktovať</a></h1>
+    
+      <form action="" method="POST" class="contact-form">
+        {% csrf_token %}
+        <input type="email" name="email" id="inp-email" required placeholder="Váš email">
+        <textarea name="message" id="inp-massage" cols="30" rows="10" required placeholder="Napíšte mi"></textarea>
+        
+        <button type="submit" name="email_btn" class="btn" id="b">poslať</button>
+        <h4 style="text-align: center;">{{error_message}}</h4>
+      </form>
+    
+    </section>
+
+  </section>
+
+
+</main>
+
+{% endblock content %}
+
+
+
+<!--scripts area-->
+{% block script_content %}
+  <!--My scripts-->
+  <!-- Initialize Swiper -->
+  <!--swiper scripts-->
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="{% static 'scripts/quotes.js' %}"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    
+  </script>
+{% endblock script_content %}
+</html>

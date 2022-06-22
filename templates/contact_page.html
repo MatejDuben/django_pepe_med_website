@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/contact_page_style.css' %}">
+{% endblock head_content %}
+
+{% block nav_links %}
+<li class="link-item"><a href="{% url 'home_page' %}">domov</a></li>
+<li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item"><a id="on-page" href="{% url 'contact_page' %}">kontakt</a></li>
+<!--<li class="link-item"><a href="#">o nás</a></li>-->
+<li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+<li class="link-item-fix"><a href="{% url 'home_page' %}">domov</a></li>
+<li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item-fix"><a id="on-page-fix" href="{% url 'contact_page' %}">kontakt</a></li>
+<!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+<li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+  
+<style>
+  body{
+    background-image: url({% static 'images/beekeeper-4426003_1920.jpg' %});
+  }
+</style>
+
+  <main>
+    <section class="contact-wrapper">
+  
+      <div class="header">
+        <div class="header__wrapper">
+          <div class="header__wrapper--text">
+              <h1>
+                <span class="s1">Od koho</span>
+                <span class="s2">si kupujem</span>
+                <span class="s3">med ?</span>
+              </h1>
+          </div>
+        </div>
+        <div class="down">
+          <span>Viac</span>
+        </div>
+      </div>
+
+
+      <div class="about">
+        <div class="about__wrapper">
+          <div class="about__wrapper--right">
+            <div class="text">
+              <h1>Volám sa Peter Abrahám</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, dolorum blanditiis! Quis iste quae voluptate vitae veritatis officiis porro laborum!</p>
+            </div>
+          </div>
+          <div class="about__wrapper--left">
+            <div class="img__wrapper">
+              <img src="{% static 'images/20210815_174202.jpg' %}" width="400"  alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h2 class="title">Záujem o med ?</h2>
+        <p class="subtitle">Ak si med chcete vyzdvyhnúť osobne, naša adresa je tu</p>
+        <div class="contact__wrapper">
+          <div class="contact__wrapper--left">
+
+            <h1>Adresa</h1>
+
+            <div class="text">
+              <div class="s1">
+                <img class="svg-icon" src="{% static 'images/svg/locate_pin.svg' %}" alt="">
+                <p>Lukavica 24 <br>
+                    Žarnovica, 966 81
+                </p>
+              </div>
+
+            </div>
+
+
+          </div>
+          <div class="horizontal-line"></div>
+          <div class="contact__wrapper--right">
+            <h1>Kontakt</h1>
+
+            <div class="text">
+
+              <div class="s1">
+                <img class="svg-icon" src="{% static 'images/svg/email_pin.svg' %}" alt="">
+                <p class="email">1pepe.med1@gmail.com</p>
+              </div>
+
+              <div class="s2">
+                <img class="svg-icon" src="{% static 'images/svg/phone_pin.svg' %}" alt="">
+                <p class="num">1234533241</p>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="contact-form__wrapper">
+          <h1 class="contact-form--title">Napíš nám </h1>
+          <form action="" class="contact-form__wrapper--form" method="post">
+            {% csrf_token %}
+            <div class="name-num__wrapper">
+              <input required type="text" id="customer_name_inp" name="customer_name" placeholder="Meno Priezvisko">
+              <input required type="tel" name="phone_num" id="phone_num_inp" placeholder="tel. čilso" pattern="[0-9]{4}[0-9]{3}[0-9]{3}">
+            </div>
+            <input required type="email" name="email" id="email_inp" placeholder="email">
+            <textarea required name="message" id="note_form" placeholder="poznámka"></textarea>
+            <button class="btn btn-sbmt" type="submit">Odoslať</button>
+          </form>
+        </div>
+      </div>
+      
+
+    </section>
+  </main>
+
+
+{% endblock content %}
+
+{% block script_content %}
+  <!--SCRIPTS HERE-->
+  <script>
+    // CHECK IF ALL INP FIELDS ARE FILLED
+    let btn_submit = document.querySelector(".btn-sbmt");
+    btn_submit.addEventListener('click', function(){
+
+      let customer_name_inp = document.getElementById('customer_name_inp').value;
+      let phone_num_inp = document.querySelector("#phone_num_inp").value
+      let email_inp = document.getElementById('email_inp').value; 
+      let message_inp = document.getElementById('note_form').value;
+      let contact_form = document.querySelector(".contact-form__wrapper--form");
+
+      if (customer_name_inp !== '' && phone_num_inp !== '' && email_inp !=='' && message_inp !== '') {
+        contact_form.submit();
+      }
+
+    });
+
+
+
+    //SET UP TO SCROLL BTN
+    let scroll_down_btn = document.querySelector(".down");
+    const contact_to_scroll = document.querySelector(".about").offsetTop;
+    scroll_down_btn.addEventListener("click",() => {
+      window.scrollTo(0,contact_to_scroll-50);
+    })
+
+
+  </script>
+{% endblock script_content %}

@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/card_page_style.css' %}">
+  
+{% endblock head_content %}
+
+{% block nav_links %}
+<li class="link-item"><a href="{% url 'home_page' %}">domov</a></li>
+<li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item"><a  href="{% url 'contact_page' %}">kontakt</a></li>
+<!--<li class="link-item"><a href="#">o nás</a></li>-->
+<li class="link-item mojZoznam-li"><a id="on-page" href="{% url 'card_page' %}">Môj zoznam</a></li>
+
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+<li class="link-item-fix"><a href="{% url 'home_page' %}">domov</a></li>
+<li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+<li class="link-item-fix"><a  href="{% url 'contact_page' %}">kontakt</a></li>
+<!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+<li class="link-item-fix mojZoznam-li"><a id="on-page-fix" href="">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+
+<style>
+  body{
+    background-image: url({% static 'images/honey-823614_1920.jpg' %});
+  }
+</style>
+
+
+  <main>
+    
+    <div class="succesful__sent-block" style="display: none;">
+      <div class="text__wrapper-succesful_sent">
+        <h1 class="succesful__sent-text text__1">Váša žiadosť o naše produkty bola poslaná na Email pepemed@gmail.com</h1>
+        <h2 class="succesful__sent-text text__2">V blízkej dobe Vám zašleme emailom blizsie informaice o pladbe a prevzatí tovaru. Na všetkom sa spolu dohodneme prostrednictvom emailu.</h2>
+        <button class="btn-succesful_sent btn">Ok, zavrieť</button>
+      </div>
+    </div>
+
+    <!-- [LIGHTBOX CONTAINER] -->
+    <div id="lb-back" style="cursor: zoom-out;">
+      <div id="lb-img" style="cursor: zoom-out;"></div>
+    </div>
+    <!-- loading snippet -->
+    <div class="loading-snippet__wrapper">
+      <div id="loading"></div>
+      <p>Posiela sa email, moze to chvilku trvat. Prosim neodchadzajte z tejto stranky</p>
+    </div>
+
+    <section class="card-wrapper">
+      {% if userCard.count == 0 %}
+        <div class="empty_card-wraper">
+
+          <h2 class="text__empty ">Ojoj zdá sa že ešte nemáte nič vo Vašom zozname</h2>
+          <h3 class="text__empty "><a href="{% url 'products_page' %}">pridajte niečo</a></h3>
+
+        </div>
+      {% else %}  
+      <div class="order">
+        <div class="order__header">
+          <div class="order-header __img">Obrázok</div>
+          <div class="order-header __title">Nadpis</div>
+          <div class="order-header __ammount">Množstvo</div>
+          <div class="order-header __price">Cena za kus</div>
+          <div class="order-header __total_price">Cena uplne</div>
+        </div>
+        
+        {% for item in userCard %}
+          <div class="order__content">
+
+            <div class="order-content __img">
+              <img src="{{item.get_item_img.url}}"  class="zoomD" style="width: 100%; cursor: zoom-in;" alt="">
+            </div>
+
+            <div class="order-content __title">
+              <h3>{{item.get_title}}</h3>
+            </div>
+
+            <div class="order-content __ammount">
+              <form action="" method="POST">
+                {% csrf_token %}
+                <h3>{{item.ammout}}</h3>
+                <div class="ammout-btn__wrapper">
+                  <button type="button" name="{{item.id}}" data-action="plus" class="btn-add ammout__btn">+</button>
+                  <button type="button" name="{{item.id}}" data-action="minus" class="btn-add ammout__btn">-</button>
+                </div>
+                
+              </form>
+            </div>
+
+            <div class="order-content __price"><h3>{{item.get_price}} </h3><h3>€</h3></div>
+
+            <div class="order-content __total_price"><h3 id="total__sum-product">{{item.get_total_sum}} </h3><h3>€</h3></div>
+          </div>
+        {% endfor %}
+        
+      </div>
+
+
+      <div class="order-completing">
+        
+        <div class="order-completing__wrapper">
+          <div class="info">
+            <p>
+              Pre pokračovanie stlačte tlačitko "pokračovať" a vyplnte následujúce kontaktné údaje prostredníctvom ktorých sa vám spätne  ozveme. <br>
+              <br>
+              Prípadne si pozrite <a href="{% url 'how_to_buy_page' %}">Ako sa u nás nakupuje.</a>
+            </p>
+          </div>
+          <div class="completing-form__wrapper">
+            <h1 class="completing-text__price_all">Hodnota Vášho zoznamu je</h1>
+            <div class="form">
+              <div class="completing-div__price">
+                <h3>Celkom</h3>
+                
+                <h3><span id="total-pice_sum">0</span> €</h3>
+                
+              </div>
+              <button type="submit" class="completing__order-btn">Pokračovať</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="next__etap-div">
+
+          <div class="form__wrapper-next_etap">
+
+            <form action="" method="POST" class="next_etap-form">
+              {% csrf_token %}
+              <h1 class="next_etap-title">kontaktné údaje:</h1>
+              <input type="text" placeholder="Meno" class="next_etap-input required-inp" required name="userName">
+              <input type="text" placeholder="Priezvisko" class="next_etap-input required-inp" required name="userLastName">
+              <input type="email" name="userEmail" id="" placeholder="email" class="next_etap-input required-inp" required>
+              <input type="tel" name="userNum" id="" placeholder="tel. cislo" class="next_etap-input required-inp" required>
+              <textarea name="userMsg" id="" cols="30" rows="10" placeholder="poznamka" class="next_etap-input"></textarea>
+              <button class="send-btn" type="submit" >Odoslať</button>
+            </form>
+
+
+          </div>
+          
+        </div>
+
+
+      </div>
+      {% endif %}  
+    </section>
+
+
+  </main>
+
+{% endblock content %}
+
+{% block script_content %}
+<script>
+   
+  let btnContinue = document.querySelector('.completing__order-btn');
+  
+  btnContinue.addEventListener('click', (e)=>{
+    let orderCustomerInfo = document.querySelector(".next__etap-div");
+    orderCustomerInfo.style.display = 'block';
+    //scroll there
+    window.scrollTo({
+      top: 700,
+      behavior: "smooth"
+    });
+  });
+
+
+
+
+
+  let sendBtn = document.querySelector('.send-btn');
+
+  sendBtn.addEventListener('click',()=>{
+    let inpName = document.querySelector("[name='userName']").value;
+    let inpLastName = document.querySelector("[name='userLastName']").value;
+    let inpEmail = document.querySelector("[name='userEmail']").value;
+    let inpNum = document.querySelector("[name='userNum']").value;
+    
+    if (inpName !== '' && inpLastName !== '' && inpEmail !== '' && inpNum !== ''){
+      document.querySelector('.loading-snippet__wrapper').classList.add('active');
+    };
+    
+  });
+
+
+    // sendBtn.addEventListener('click', (e)=>{
+    //   let inpName = document.querySelector("[name='userName']").value;
+    //   let inpLastName = document.querySelector("[name='userLastName']").value;
+    //   let inpEmail = document.querySelector("[name='userEmail']").value;
+    //   let inpNum = document.querySelector("[name='userNum']").value;
+    //   let inpMassage = document.querySelector("[name='userMsg']").value;
+      
+    //   userInformations(inpName, inpLastName, inpEmail, inpNum, inpMassage)
+      
+    // });
+    // function userInformations(usrName, usrLName, usrEmail, usrNum, usrMsg){
+    //   console.log("data is sending....");
+    //   let url = '/sentMsgCard/';
+
+    //   fetch(url, {
+    //     method: "POST",
+    //     headers:{
+    //       'Content-Type':'application/json',
+    // 			'X-CSRFToken':csrftoken,
+    //     },
+    //     body:JSON.stringify({
+    //       "user_name":usrName, "user_last_name":usrLName, "user_emali": usrEmail, "user_num": usrNum, "user_massage": usrMsg
+    //     })
+    //   })
+    //   .then((response) => {return response.json()})
+    //   // .then(
+    //   //   
+    //   //   location.reload()
+    //   // )
+
+    // }
+
+
+
+
+  // This function will show the image in the lightbox
+ 
+ 
+  var zoomImg = function () {
+    // Create image clone
+    var clone = this.cloneNode();
+    clone.classList.remove("zoomD");
+    
+    // Put clone into lightbox
+    var lb = document.getElementById("lb-img");
+    lb.innerHTML = "";
+    lb.appendChild(clone);
+    
+    // Show lightbox
+    lb = document.getElementById("lb-back");
+    lb.classList.add("show");
+
+
+  };
+
+  window.addEventListener("load", function(){
+    // Attach on click events to all .zoomD images
+    var images = document.getElementsByClassName("zoomD");
+    if (images.length>0) {
+      for (var img of images) {
+        img.addEventListener("click", zoomImg);
+      }
+    }
+
+    // Click event to hide the lightbox
+    document.getElementById("lb-back").addEventListener("click", function(){
+      this.classList.remove("show");
+    })
+  });
+
+
+  let BtnsAdd = document.querySelectorAll('.btn-add');
+  
+  //console.log(BtnsPlus);
+  BtnsAdd.forEach(element => {
+    element.addEventListener('click', (e)=>{
+      let clickedBtn = element.getAttribute("name");
+      let action_get = element.getAttribute('data-action');
+      
+      updateUserOrder(clickedBtn, action_get);
+    } )
+  });
+
+
+  function updateUserOrder(productId, action){
+	  console.log('User is authenticated, sending data...')
+
+		var url = '/updateItem/'
+
+		fetch(url, {
+			method:'POST',
+			headers:{
+				'Content-Type':'application/json',
+				'X-CSRFToken':csrftoken,
+			}, 
+			body:JSON.stringify({'productId':productId, 'action':action})
+		})
+		.then((response) => {
+		   return response.json();
+		})
+		.then((data) => {
+		    location.reload()
+		});
+}
+  
+
+  //Get total Sum of all products in card
+  let totalSum = document.getElementById('total-pice_sum');
+  let productPrice = document.querySelectorAll('#total__sum-product');
+  let productSum = 0;;
+  window.onload = () =>{
+    productPrice.forEach(element => {
+        productSum = productSum + parseFloat(element.innerHTML);
+        totalSum.innerText = productSum;
+    });
+  }
+
+</script>
+{% endblock script_content %}

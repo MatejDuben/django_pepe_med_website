@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!--MY-CSS-->
+  <link rel="stylesheet" href="{% static 'css/product_view/product-view-style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/product_view/product-view-style_responsive.css' %}">
+{% endblock head_content %}
+
+{% block nav_links %}
+  <li class="link-item"><a  href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item"><a id="on-page" href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <!--<li class="link-item"><a href="#">o nás</a></li>-->
+  <li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a  href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a id="on-page-fix" href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+
+
+{% block content %}
+
+<style>
+  body{
+    background-image: url({% static 'images/honey-823614_1920.jpg' %});
+  }
+</style>
+
+<main id="main">
+
+  <!-- [LIGHTBOX CONTAINER] -->
+  <div id="lb-back">
+    <div id="lb-img"></div>
+  </div>
+
+  <section class="product-wrapper">
+    <div class="container">
+      <div id="need to be changed to col on resposive" class="row ">
+        
+        <div class="col col-lf">
+            <!-- Swiper -->
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              
+              <div class="swiper-slide">
+                <div class="product-img-wrapper">
+                  <img src="{{ product_img.url }}" class="zoomD" alt="">
+                </div>
+              </div>
+              {% if product_img_one == '' %}
+
+              {% else %}
+              <div class="swiper-slide">
+                <div class="product-img-wrapper">
+                  <img src="{{ product_img_one.url }}" class="zoomD" alt="">
+                  
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-img-wrapper">
+                  <img src="{{ product_img_two.url }}" class="zoomD" alt="">
+                  
+                </div>
+              </div>
+              {%endif%}
+
+      
+                        
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+          </div>
+          
+
+        </div>
+
+
+        <div class="col col-rg">
+          <form action="" method="post">
+            {% csrf_token %}
+
+            <div class="upper-container">
+              <div class="container-row">
+                <h1 class="product-title">{{product_title}}</h1>
+                <p id="price">{{product_price}}€</p>
+              </div>
+              <button class="btn btn__addToCard" type="submit">Pridať do zoznamu</button>
+
+            </div>
+            <hr></hr>
+            <div class="des-container">
+              <p class="description">
+                {{product_desc}}
+              </p>
+            </div>
+            
+            
+
+
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="addToCard-div__wrapper hidden optical-hidden" >
+      <p>Produkt bol pridaný do <a href="{% url 'card_page' %}" class="card__link">Vášho zoznamu</a></p>
+    </div>
+    <h4 id="product-real-id">cislo produktu {{product_id}}</h4>
+  </section>
+
+</main>
+{% endblock content %}
+  
+
+{% block script_content %}
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+      },
+    });
+
+
+  // This function will show the image in the lightbox
+  var zoomImg = function () {
+    // Create image clone
+    var clone = this.cloneNode();
+    clone.classList.remove("zoomD");
+    
+    // Put clone into lightbox
+    var lb = document.getElementById("lb-img");
+    lb.innerHTML = "";
+    lb.appendChild(clone);
+    
+    // Show lightbox
+    lb = document.getElementById("lb-back");
+    lb.classList.add("show");
+
+
+  };
+
+  window.addEventListener("load", function(){
+    // Attach on click events to all .zoomD images
+    var images = document.getElementsByClassName("zoomD");
+    if (images.length>0) {
+      for (var img of images) {
+        img.addEventListener("click", zoomImg);
+      }
+    }
+
+    // Click event to hide the lightbox
+    document.getElementById("lb-back").addEventListener("click", function(){
+      this.classList.remove("show");
+    })
+  });
+
+
+  
+  //*****Added to card info-box*****
+
+  let addToCardBtn = document.querySelector(".btn__addToCard");
+  let infoBanner = document.querySelector('.addToCard-div__wrapper');
+
+  if("{{added}}" === 'True'){
+    var is_added = true
+  }
+
+  if(is_added){
+    infoBanner.classList.remove('hidden');
+    setTimeout(function(){
+      infoBanner.classList.remove("optical-hidden")
+    }, 200);
+  }
+
+  
+
+
+  addToCardBtn.addEventListener('click', (e)=>{
+    
+    if(infoBanner.classList.contains("hidden")){
+      
+      console.log("trueee");
+      
+      // infoBanner.classList.remove('hidden');
+      // setTimeout(function(){
+      //   infoBanner.classList.remove("optical-hidden")
+      // }, 200);
+    }
+
+  });
+
+  infoBanner.addEventListener("click", (e)=>{
+    infoBanner.classList.add("optical-hidden")
+    setTimeout(function(){
+      infoBanner.classList.add('hidden');
+    }, 200);
+  })
+  
+
+
+
+
+
+  </script>
+{% endblock script_content %}

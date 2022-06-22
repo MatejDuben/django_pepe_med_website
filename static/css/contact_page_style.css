@@ -1,0 +1,137 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 18px;
+}
+
+
+.title{
+  font-size: 22px;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+
+
+#name{
+  font-size: 38px;
+}
+h2{
+  font-size: 28px;
+}
+h4{
+  font-size: 22px;
+}
+a:hover{
+  color: #fff;
+}
+
+
+
+
+.container{
+  margin-top: 4%;
+}
+
+
+.contact-wrapper{
+  border-radius: 30px;
+  margin: auto;
+  width: 80%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2%;
+  margin-top: 5%;
+
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
+.left-contact-sec-wrapper{
+  background: none;
+
+}
+.left-contact-sec-wrapper .wrapper{
+  display: block;
+  text-align: left;
+  width: auto;
+  width: 70%;
+  margin: auto;
+}
+.left-contact-sec-wrapper .wrapper .list-links-wrapper{
+ padding: 0%;
+}
+
+.left-contact-sec-wrapper .wrapper .list-links-wrapper .link-wrapper{
+  display: block;
+  list-style: none;
+  position: relative;
+ 
+
+}
+
+.left-contact-sec-wrapper .wrapper .list-links-wrapper .link-wrapper .link{
+  color: #000;
+  
+}
+.line{
+  position: relative;
+  height: 2px;
+  left: -5px;
+  color: #000;
+  border-bottom: 2px solid black;
+  width: 80%;
+}
+
+
+
+.right-contact-form-wrapper .wrapper{
+  display: block;
+  position: relative;
+  width: 60%;
+  height: 100%;
+  margin: auto;
+  top: -25px;
+}
+
+.right-contact-form-wrapper .wrapper .form-contact{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.right-contact-form-wrapper .wrapper .form-contact .inp{
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.right-contact-form-wrapper .wrapper .form-contact .inp.sm{
+  height: 42px;
+  font-size: 18px;
+}
+
+.right-contact-form-wrapper .wrapper .form-contact .btn{
+  font-size: 16px;
+  position: relative;
+  background: #fff;
+  display: inline-block;
+  width: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.right-contact-form-wrapper .wrapper .form-contact .btn:hover{
+  background: rgb(247, 247, 247);
+}
+
+#info-mes{
+  position: relative;
+  text-align: center;
+  margin: 0;
+}

@@ -1,0 +1,93 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  width: 90%;
+  margin: auto;
+}
+
+
+.header-info{
+  width: 80%;
+  font-size: 22px;
+  margin: auto;
+  text-align: center;
+}
+
+
+
+
+.order{
+width: 100%;
+margin-top: 120px;
+}
+
+.order__content .order-content, .order__header .order-header{
+width: 170px;
+}
+.order__header .order-header.__img, .order__content .order-content.__img{
+width: 120px;
+}
+.order__header .order-header.__title, .order__content .order-content.__title{
+width: 240px;
+}
+
+
+.order__header{
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+text-align: center;
+
+}
+
+.order__header .order-header{
+font-size: 24px;
+
+}
+
+
+
+.order__content{
+margin-top: 20px;
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+padding-bottom: 20px;
+border-bottom: solid 1px rgb(0, 0, 0);
+}
+.order__content .order-content{
+text-align: center;
+display: flex;
+justify-content: center;
+align-self: center;  
+height: 100%;
+
+}
+
+.order__content .order-content.__title{
+padding-left: 5px;
+/* text-align: left; */
+}
+.order__content .order-content.__title h3{
+display: block;
+}
+
+#order-input{
+text-align: center;
+background: none;
+border: none;
+display: inline-block;
+font-size: 24px;
+width: 80px;
+
+}
+
+
+.order-completing{
+height: auto;
+width: 100%;
+}

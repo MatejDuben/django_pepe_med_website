@@ -1,0 +1,447 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/products_page/products-page-styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/products_page/products-page-style_responsive.css' %}">
+{% endblock head_content %}
+
+{% block nav_links %}
+  <li class="link-item"><a  href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item"><a id="on-page" href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+
+  <!--<li class="link-item"><a href="#">o nás</a></li>-->
+{% endblock nav_links %}
+
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a  href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a id="on-page-fix" href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+
+  <style>
+    body{
+      background-image: url({% static 'images/apiary-1866740_1920.jpg' %});
+    }
+  </style>
+  
+  <section class="slider-sec">
+     <!-- Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <section class="slider-content">
+            <div class="img-wrapper">
+              <img src="../../static/images/med_kvetovy.jpg" alt="" class="img">
+            </div>
+            <div class="description">
+              <h2>Med kvetový</h2>
+              <p>
+                Prvý jarný med z nektáru ovocných stromov, ďateliny, lúčnych kvetov. 
+                Je ľahko stráviteľný, pretože obsahuje jednoduché cukry glukózu a fruktózu, ktoré sa rýchlo vstrebú do krvi čím sú pre ľudský organizmus rýchlym zdrojom energie.
+
+              </p>
+            </div>
+          </section>
+
+
+        </div>
+        <div class="swiper-slide">
+          <section class="slider-content">
+            <div class="img-wrapper">
+              <img src="../../static/images/med_agatovy.jpg" alt="" class="img">
+            </div>
+            <div class="description">
+              <h2>Med agátový</h2>
+              <p>
+                Má jemnú chuť  a špecifickú farbu. Jeho farebná škála sa pohybuje od takmer bezfarebného po zlatožltú. Tento jemný med pochádzajúci prevažne z agátových hájov južného Slovenska. Vďaka vysokému obsahu fruktózy zostáva dlho tekutý a nekryštalizuje Agátový med obsahuje na rozdiel od iných druhov, len veľmi malé množstvo peľu, čo môže byť dobrou správou pre alergikov.
+              </p>
+            </div>
+          </section>
+        </div>
+        <div class="swiper-slide">
+          <section class="slider-content">
+            <div class="img-wrapper">
+              <img src="../../static/images/med_pastovany.jpg" alt="" class="img">
+            </div>
+            <div class="description">
+              <h2>Med kvetový pastovaný</h2>
+              <p>
+                 Je prírodný kvetový med, v ktorom zostávajú neporušené všetky biologicky aktívne látky ako sú enzýmy, vitamíny a minerálne látky. Pastový med nestráca pastovaním nič na svojej kvalite a výnimočnosti, nesteká (z pečiva a pod.) a zostáva dlho vláčny. Pastovaný med vyrába včelár pastovaním. Pastovanie medu znamená, že med sa niekoľkokrát premiešava pastovacou vrtuľou. 
+                 <!--Do pastovaného medu sa nič nepridáva. Pri pastovanom mede sa mení len jeho fyzikálna vlastnosť a to že už nebude tekutý. Pastovaný med je vláčny, krémový ako pasta a tiež už nehrozí že stuhne. Pri pastovanom mede sa zmenila len štruktúra t.j. kryštáliky ktoré sú v mede sa miešaním rozbili na menšie a tým sa docielilo, že med už je trvale pastového charakteru a nestvrdne. Výroba pastovaného medu trva 3 týždne.  -->
+              </p>
+            </div>
+          </section>
+        </div>
+        
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Arrows -->
+      <div class="swiper-button-next swiper-arr"></div>
+      <div class="swiper-button-prev swiper-arr"></div>
+  </div>
+
+  
+  </section>
+
+  <main id="main">
+    <section class="products-wrapper main-wrapper">
+
+      <div class="filter__wrapper-bg">
+
+        <div class=" filter-sec responsive">
+          <button  class="btn main__btn">Otvoriť filter</button>
+          <div class="filter" >
+            <div class="filter-option">
+              <button class="btn filter-btn" >med</button>
+              <button class="btn filter-btn" >drevené betlehemi</button>
+              <button class="btn filter-btn" >sviečky z vosku</button>
+              <button class="btn filter-btn" >zrušiť filtre</button>
+            </div>
+          </div>
+       </div>
+      </div>
+      
+
+
+      <div class="product-icon-wrapper">
+
+        <ul class="products-list-wrapper">
+          {% for product in products %}
+            <li class="product-icon" data-filter="{{product.product_type}}">
+              
+              <div class="product-img-wrapper">
+                <img src="{{product.image.url}}" alt="" class="product-img">
+              </div>
+
+              <div class="product-des">
+                <h3 id="product-title">{{product.title}}</h3>             
+                <h4 id="price">{{product.price}}€</h4>
+              </div>
+              <div class="product-links">
+                <a href="{% url 'product_page' product.slug %}" class="btn btn-more">Viac</a>
+                <button type="button" class="btn btn-card" name="send_btn" data-id="{{product.id}}" data-action="plus">Pridať do zoznamu</button>
+                <p class="added added__{{product.id}}">pridané</p>
+              </div>
+            </li>
+          {% endfor %}
+          
+        </ul>
+      </div>
+    </section>
+  </main>
+
+{% endblock content %}
+
+
+
+{% block script_content %}
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+  <!--My scripts-->
+
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+
+    //get id of product !!fatching data
+    let BtnsAddToZoznam = document.querySelectorAll('.btn-card');
+  
+    //console.log(BtnsPlus);
+    BtnsAddToZoznam.forEach(element => {
+      element.addEventListener('click', (e)=>{
+        let getProductId = element.getAttribute("data-id");
+        let getAction = element.getAttribute('data-action');
+        
+        updateUserOrder(getProductId, getAction);
+      } )
+    });
+
+
+
+    function updateUserOrder(productId, action){
+      var url = '/updateViaProductsPage/'
+
+      fetch(url, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken,
+        }, 
+        body:JSON.stringify({'productId':productId, 'action':action})
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        
+        gsap.to(`.added__${productId}`,{
+          display: 'inline-block',
+          opacity: '100',
+          duration: 0.2
+        })
+
+
+          location.reload()
+      });
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //filter
+    let openBtn = document.querySelector('.main__btn');
+    let isActive = false;
+    let data = document.querySelectorAll(".product-icon");  //this is an attribute
+    let filterBtn = document.querySelectorAll('.filter-btn');
+
+
+    window.addEventListener('resize', ()=>{
+      if (window.innerWidth < 1050) {
+        document.querySelector('.filter-sec').classList.add('responsive');
+      }
+      else{
+        document.querySelector('.filter-sec').classList.remove('responsive');
+      }
+    });
+
+    openBtn.addEventListener('click', (e)=>{
+      if (isActive===false){
+        isActive = true;
+        //perpise sa na closebtn
+        openBtn.innerHTML = 'Zatvoriť filter'
+        if (window.innerWidth < 1050) {
+          // otvori sa responsivna sekcia s filtrami
+          gsap.fromTo('.filter',{
+            y:'-300px',
+            display: 'none'
+          },{
+            display:'flex',
+            y: 0,
+            duration: 1
+          })
+  
+          gsap.to('.filter-sec', {
+            duration: 0.2,
+            height: '400px',
+          })
+        }
+        else{
+          // otvori sa sekcia s filtrami
+          gsap.fromTo('.filter',{
+            y:'-400px',
+            display: 'none'
+          },{
+            display:'flex',
+            y: 0,
+            duration: 1
+          })
+        };
+
+      }
+      else if (isActive){
+        isActive = false;
+        //perpise sa na closebtn
+        openBtn.innerHTML = 'Otvoriť filter'
+        if(window.innerWidth < 1050){
+
+          // otvori sa sekcia s filtrami
+          gsap.to('.filter',{
+            y:'-300px',
+            display: 'none',
+            duration: 1
+          })
+          gsap.to('.filter-sec', {
+            duration: 0.2,
+            height: '80px',
+          })
+     
+          
+
+        }else{
+          // otvori sa sekcia s filtrami
+          gsap.to('.filter',{
+            y:'-300px',
+            display: 'none',
+            duration: 1
+          })
+        };
+
+      }
+    });
+      
+   
+
+    filterBtn.forEach(btn =>{
+        btn.addEventListener('click', ()=>{
+          
+          
+          
+          if (btn.innerHTML === 'med'){
+            
+            data.forEach(element => {
+              let filterDataAttribute = element.getAttribute("data-filter");
+              
+            
+              if (filterDataAttribute === 'med'){
+                
+                
+                if(element.classList.contains('hidden')){
+                  element.classList.remove('hidden');
+                   setTimeout(function () {
+                   element.classList.remove('visuallyhidden');
+                 }, 20);
+                }
+              }
+              if (filterDataAttribute !== 'med'){
+                
+                if ( element.classList.contains('hidden') === false) {
+                  
+                  element.classList.add('visuallyhidden');    
+                  element.addEventListener('transitionend', function(e) {
+                    element.classList.add('hidden');
+                  }, {
+                    capture: false,
+                    once: true,
+                    passive: false
+                  });
+                }
+              };            
+            });
+          };
+          
+          if (btn.innerHTML === 'sviečky z vosku'){
+            
+            data.forEach(element => {
+              let filterDataAttribute = element.getAttribute("data-filter");
+  
+              if (filterDataAttribute === 'sviecka'){
+                
+                
+                if(element.classList.contains('hidden')){
+                  element.classList.remove('hidden');
+                   setTimeout(function () {
+                   element.classList.remove('visuallyhidden');
+                 }, 20);
+                }
+              }
+              if (filterDataAttribute !== 'sviecka'){
+                
+                if ( element.classList.contains('hidden') === false) {
+                  
+                  element.classList.add('visuallyhidden');    
+                  element.addEventListener('transitionend', function(e) {
+                    element.classList.add('hidden');
+                  }, {
+                    capture: false,
+                    once: true,
+                    passive: false
+                  });
+                }
+              };            
+            });
+          };
+
+          if (btn.innerHTML === 'drevené betlehemi'){
+            
+            data.forEach(element => {
+              let filterDataAttribute = element.getAttribute("data-filter");
+  
+              if (filterDataAttribute === 'betlehem'){
+
+                if(element.classList.contains('hidden')){
+                  element.classList.remove('hidden');
+                   setTimeout(function () {
+                   element.classList.remove('visuallyhidden');
+                 }, 20);
+                }
+              }
+              if (filterDataAttribute !== 'betlehem'){
+
+                if ( element.classList.contains('hidden') === false) {
+                  
+                  element.classList.add('visuallyhidden');    
+                  element.addEventListener('transitionend', function(e) {
+                    element.classList.add('hidden');
+                  }, {
+                    capture: false,
+                    once: true,
+                    passive: false
+                  });
+                }
+              };            
+            });
+          };
+
+          if (btn.innerHTML === 'zrušiť filtre'){
+            
+            data.forEach(element => {
+              let filterDataAttribute = element.getAttribute("data-filter");
+              if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+                  setTimeout(function () {
+                    element.classList.remove('visuallyhidden');
+                  }, 20);
+              } 
+            });
+          };
+
+       
+
+        })
+      })
+  
+
+    
+
+
+
+
+  </script>
+{% endblock script_content %}
+</html>

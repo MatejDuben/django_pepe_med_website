@@ -1,0 +1,366 @@
+{% load static %} <!--to co je v base, uz nemuspim pisat a opakovat inde-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PepeMed</title>
+  <link rel="icon" href="{% static 'images/icon_logo.png' %}">
+  <!-- font Awesome -->
+  <link rel="stylesheet" href="{% static 'Font-Awesome-4.7.0/css/font-awesome.min.css' %}">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <!--SWIPER-SLIDE-->
+  <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.css' %}">
+  <link rel="stylesheet" href="{% static 'node_modules/swiper/swiper-bundle.min.css' %}">
+  <!--boostrap-->
+  <link rel="stylesheet" href="{% static 'bootstrap-3.4.1-dist/css/bootstrap.min.css' %}">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <!--MY-CSS-->
+  <link rel="stylesheet" href="{% static 'css/nav-bar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <!--Vue link-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+
+
+    function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+		var csrftoken = getToken('csrftoken')
+
+
+
+
+    function getCookie(name) {
+		    var cookieValue = null;
+		    if (document.cookie && document.cookie !== '') {
+		        var cookies = document.cookie.split(';');
+		        for (var i = 0; i < cookies.length; i++) {
+		            var cookie = cookies[i].trim();
+		            // Does this cookie string begin with the name we want?
+		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		                break;
+		            }
+		        }
+		    }
+		    return cookieValue;
+		}
+
+
+		function uuidv4() {
+		  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+		    return v.toString(16);
+		  });
+		}
+
+    let device = getCookie('device')
+    
+
+  </script>
+  {% block head_content %}
+    <!--HEADER TITEL,LINKS AND OTHER HERE-->
+  {% endblock head_content %}
+</head>
+<body>
+  <style>
+   
+    body{
+      background-color: #eeeded;
+      color: #000;
+      background-position-x: center;
+      background-size: cover;
+      width: 100%;
+      background-repeat: no-repeat;
+      height: auto;
+      padding-bottom: 100px;
+    }
+
+
+    .button_top{
+      position: fixed;
+      display: none;
+      right: 30px;
+      bottom: 50px;
+      height: 60px;
+      width: 60px;
+      background: #fff;
+      border-radius: 100%;
+      cursor: pointer;
+      transition: 0.2s;
+      z-index: 4;
+    }
+    .button_top .fa-arrow-up{
+      font-size: 48px;
+      text-align: center;
+      color: #000;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .button_top:hover{
+      -webkit-box-shadow: 2px 6px 14px 1px rgba(0,0,0,0.46); 
+      box-shadow: 2px 6px 14px 1px rgba(0,0,0,0.46);
+    }
+
+    .cookies-card{
+      position: fixed;
+      display: block;
+      width: 100%;
+      height: 80px;
+      bottom: 0px;      
+      background: rgb(255, 255, 255);
+      z-index: 4;
+      visibility: visible;
+    }
+    .cookies__text-wrapper{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      
+    }
+    .cookies__text{
+      font-size: 18px;
+      color: black;
+    }
+    .cookies__link{
+      font-size: 18px;
+      color: black;
+      text-decoration: underline;
+    }
+    .cookies__link:hover{
+      color: black;
+      text-decoration: none;
+    }
+    .cookies-btn{
+      background: #000;
+      color: #fff;
+      margin-left: 30px;
+      font-size: 16px;
+      padding:  5px 15px;
+    }
+    .cookies-btn:hover{
+      color: #fff;
+    }
+
+  </style>
+  <header>
+    <!--responsive stuff-->
+    <div class="out-wrap">
+      <!-- <div class="logo-wrapper-outside">
+        <a href="{% url 'home_page' %}" id="logo">LOGO</a>
+      </div>
+      <i class="fa fa-bars open-nav-link" aria-hidden="true"></i> -->
+    </div> 
+
+    <!--main navbar-->
+    <section class="nav-bar-wrapper">
+      
+      <div class="responsive-flex_row">
+        <div class="logo-wrapper ">
+          <a href="{% url 'home_page' %}" id="logo">LOGO</a>
+        </div>
+  
+        <div class="hamburger-menu"><span class="hamburger__line hamburger__line1"></span> <span class="hamburger__line hamburger__line2"></span></div>
+  
+      </div>
+      
+      <div class="nav-bar-links-wrapper ">
+        
+        <ul class="nav-bar-links">
+          {% block nav_links %}
+            <!--Here will be all links in navbar  li class = 'link-item' -->
+          {% endblock nav_links %}
+        </ul>
+        <div class="logo-wrapper-in-open-bar">
+          <a href="{% url 'home_page' %}" id="logo">LOGO</a>
+        </div>
+      </div>
+
+    </section>
+  
+    <!--fixed navbar-->
+    
+
+  </header>
+
+
+  <div class="cookies-card">
+    <div class="cookies__text-wrapper">
+      <p class="cookies__text ">Táto stránka používa súbory cookies <a class="cookies__link" href="https://sk.wikipedia.org/wiki/HTTP_cookie">viac info</a></p> <button class="cookies-btn btn" type="button">ok, zatvoriť</button>
+    </div>
+    
+  </div>
+  {% block content %}
+
+    <!--MAIN CONTENT HERE-->
+
+  {% endblock content %}
+
+  <footer>
+    <section class="footer-sec">
+      <div class="wrapper">
+        <ul class="main-links nav-bar-links footer">
+          <li class="link-item f"><a href="{% url 'home_page' %}">menu</a></li>
+          <li class="link-item f"><a href="{% url 'products_page' %}">produkty</a></li>
+          <li class="link-item f"><a href="{% url 'contact_page' %}">kontakt</a></li>
+          <li class="link-item f"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+          <!--<li class="link-item f"><a href="{% url 'contact_page' %}">o nás</a></li>-->
+        </ul>
+        <div class="line"></div>
+        <h4 class="org-made">vyrobene 2021</h4>
+      </div>
+    </section>
+  
+  </footer>
+
+
+
+</body>
+<!--GSAP SCRIPTS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js" 
+integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ==" 
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+</script>
+<!--swiper scripts-->
+<script src="{% static 'node_modules/swiper/swiper-bundle.js' %}"></script>
+<script src="{%static 'node_modules/swiper/swiper-bundle.min.js'%}"></script>
+
+<script src="{% static 'scripts/fix_nav_bar.js' %}"></script>
+{% block script_content %}
+  <!--SCRIPTS HERE-->
+{% endblock script_content %}
+
+<script>
+
+  //on every resize it refres
+  window.addEventListener('resize', ()=>{
+    window.reload()
+  })
+
+
+  // let navBarWrapper = document.querySelector(".out-wrap");
+  // let navBarSec =document.querySelector('.nav-bar-wrapper');
+  // navBarWrapper.addEventListener('click',(e)=>{
+  //   var tl = gsap.timeline({defaults: {easy: 'power1.out'}});
+  //   tl.to(navBarWrapper, {y:"-100%", duration: 1});
+  //   tl.to(navBarSec, {y:1, duration: 2});
+  // });
+
+  // let closeBtn = document.querySelector('.close-btn');
+  // closeBtn.addEventListener('click', (e)=>{
+  //   var tl = gsap.timeline({defaults: {easy: 'power1.in'}});
+  //   tl.to(navBarSec, {y:"-100%", duration: 1});
+  //   tl.to(navBarWrapper, {y:1, duration: 1});
+  // });
+
+  // HAMBURGER MAIN MENU SETUP
+  let hamburgerBox = document.querySelector('.hamburger-menu');
+  hamburgerBox.addEventListener('click', ()=>{
+    let hamburgerBox = document.querySelectorAll('.hamburger__line');
+    let navbarLinksWrapper = document.querySelector('.nav-bar-links-wrapper');
+    hamburgerBox.forEach(element => {
+      if(element.classList.contains('active')){
+        element.classList.remove('active');  
+
+        navbarLinksWrapper.style.opacity = '0'
+        setTimeout(()=>{
+          navbarLinksWrapper.style.display = 'none';
+        }, 20);
+        //set lines color
+        if(window.innerWidth < 1050){
+          hamburgerBox.forEach(line => {
+            line.style.backgroundColor  = '#ffffff';
+          });
+        }
+
+      }
+      else{
+        element.classList.add('active');
+        
+        navbarLinksWrapper.style.display = 'block';
+        setTimeout(()=>{
+          navbarLinksWrapper.style.opacity = '100'
+        }, 20);
+        //set lines color
+        if(window.innerWidth < 1050){
+          hamburgerBox.forEach(line => {
+            line.style.backgroundColor  = '#000000';
+          });
+        }
+        
+      }
+
+
+    });
+  })
+
+  let fixedNav = document.querySelector('.nav-bar-wrapper');
+  let mainWrapper = document.querySelector('.main-wrapper');
+  window.onscroll = function(){
+    if(window.pageYOffset > 180){
+      fixedNav.classList.add('fixed-nav');
+      try{
+        mainWrapper.classList.add('fixed-nav');
+      }catch{};
+
+    }
+    else{
+      fixedNav.classList.remove('fixed-nav');
+      try{
+        mainWrapper.classList.remove('fixed-nav');
+      }catch{};
+    };
+    
+  };
+
+
+
+  // cookies card
+  let cookieCardBtn = document.querySelector(".cookies-btn");
+  let cookieCard = document.querySelector(".cookies-card");
+
+  if (device == null || device == undefined){
+    document.querySelectorAll(".mojZoznam-li").forEach(element => {
+      element.style.display = "none";
+    });
+    
+    cookieCardBtn.addEventListener('click', (e)=>{
+      cookieCard.style.display = 'none';
+      device = uuidv4()  ;  
+      document.cookie ='device=' + device + ";domain=;path=/"
+
+      location.reload()
+    })
+
+  }
+  else{
+    cookieCard.style.transform = 'translateY(800px)';
+    cookieCard.style.display = 'none';
+    cookieCard.style.visibility = 'hidden';
+    document.querySelectorAll(".mojZoznam-li").forEach(element => {
+      element.style.display = "block";
+    });
+  }
+
+
+</script>
+
+</html>

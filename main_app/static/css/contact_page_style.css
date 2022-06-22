@@ -1,0 +1,278 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  font-size: 18px;
+}
+
+
+.title{
+  font-size: 22px;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+
+
+#name{
+  font-size: 38px;
+}
+h2{
+  font-size: 28px;
+}
+h4{
+  font-size: 22px;
+}
+a:hover{
+  color: #fff;
+}
+
+
+
+
+.container{
+  margin-top: 4%;
+}
+
+
+.contact-wrapper{
+  border-radius: 30px;
+  margin: auto;
+  width: 80%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 2%;
+  margin-top: 5%;
+
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+  
+
+.contact-wrapper .header{
+  display: block;
+  height: 68vh;
+  width: 100%;
+}
+.contact-wrapper .header .down span{
+  border-bottom: solid black 2px;
+  font-weight: bold;
+  transition: 0.4s;
+  cursor: default;
+}
+.contact-wrapper .header .down:hover>span{
+  padding: 0 40px;
+}
+.contact-wrapper .header .header__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  
+}
+.contact-wrapper .header .header__wrapper .header__wrapper--text h1 {
+  display: flex;
+  flex-direction: column;
+}
+.contact-wrapper .header .header__wrapper .header__wrapper--text h1 span{
+  font-size: 128px;
+}
+.contact-wrapper .header .header__wrapper .header__wrapper--text h1 .s1{
+  font-weight: bolder;
+}
+.contact-wrapper .header .header__wrapper .header__wrapper--text h1 .s2{
+  font-weight: 100;
+}
+
+.contact-wrapper .header .header__wrapper .header__wrapper--text h1 .s3{
+  font-weight: bold;
+}
+
+.contact-wrapper .header .down{
+  text-align: center;
+}
+
+.contact-wrapper .about{
+  display: block;
+  height: auto;
+  width: 100%;
+  margin-top: 11rem;
+}
+.contact-wrapper .about .about__wrapper{
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+}
+.contact-wrapper .about .about__wrapper .about__wrapper--right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-wrapper .about .about__wrapper .about__wrapper--right .text h1{
+  font-size: 4rem;
+  font-weight: bold;
+}
+.contact-wrapper .about .about__wrapper .about__wrapper--right .text p{
+  max-width: 80%;
+
+}
+
+
+
+.contact-wrapper .contact{
+  display: block;
+  height: auto;
+  width: 100%;
+  margin-top: 11rem;
+}
+
+.contact-wrapper .contact .title{
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bold;
+}
+.contact-wrapper .contact .subtitle{
+  text-align: center;
+  font-size: 21px;
+}
+
+
+.contact-wrapper .contact .contact__wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  margin-top: 100px;
+}
+.contact-wrapper .contact .contact__wrapper .horizontal-line{
+  display: block;
+  width: 2px;
+  height: 30rem;
+  background: #000;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left,.contact-wrapper .contact .contact__wrapper .contact__wrapper--right{
+  min-height: 30rem;
+}
+
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left h1, .contact-wrapper .contact .contact__wrapper .contact__wrapper--right h1{
+  font-size: 4rem;
+  font-weight: bold;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text,.contact-wrapper .contact .contact__wrapper .contact__wrapper--left .text{
+  display: flex;
+  justify-content: center;
+  height: 60%;
+  
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left .text{
+  flex-direction: row;
+  align-items: center;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left .text .s1{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left .text .s1 p{
+  margin-left: 2rem;
+}
+.svg-icon{
+  height: 48px;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text{
+  flex-direction: column;
+}
+
+
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--left .text p{
+  margin-left: 1rem;
+}
+
+
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text .s1, .contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text .s2{
+  display: flex;
+  align-items: center;
+  
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text .s1{
+  margin-bottom: 2rem;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text .s1 p{
+  margin-left: 2rem;
+}
+.contact-wrapper .contact .contact__wrapper .contact__wrapper--right .text .s2 p{
+  margin-left: 2rem;
+}
+
+
+
+.contact-wrapper .contact-form{
+  display: block;
+  height: auto;
+  width: 100%;
+  margin-top: 11rem;
+}
+.contact-wrapper .contact-form .contact-form__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 100px;
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form--title{
+  display: block;
+  margin-bottom: 3rem;
+
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form__wrapper--form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form__wrapper--form input{
+  outline: none;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form__wrapper--form .name-num__wrapper{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form__wrapper--form .name-num__wrapper input{
+  width: 47%;
+}
+#email_form{
+  margin-top: 2rem;
+}
+#note_form{
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+  min-height: 26rem;
+  padding: 5px 10px;
+}
+.contact-wrapper .contact-form .contact-form__wrapper .contact-form__wrapper--form .btn-sbmt{
+  display: inline-block;
+  width: 120px;
+  font-size: 1.7rem;
+  background: #fff;
+  margin: auto;
+  margin-top: 2rem;
+}

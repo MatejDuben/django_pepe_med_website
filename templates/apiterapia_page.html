@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/apiterapi_page_style.css' %}">
+{% endblock head_content %}
+
+<!-- main links -->
+{% block nav_links %}
+  <li class="link-item"><a href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item"><a id="on-page" href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <li class="link-item mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links%}
+<!-- links on fixed section -->
+{% block nav_links_fix %}
+  <li class="link-item-fix"><a href="{% url 'home_page' %}">domov</a></li>
+  <li class="link-item-fix"><a href="{% url 'products_page' %}">produkty</a></li>
+  <li class="link-item-fix"><a href="{% url 'contact_page' %}">kontakt</a></li>
+  <li class="link-item-fix"><a id="on-page-fix" href="{% url 'apiterapia_page' %}">Apiterapia</a></li>
+  <!--<li class="link-item-fix"><a href="#">o nás</a></li>-->
+  <li class="link-item-fix mojZoznam-li"><a href="{% url 'card_page' %}">Môj zoznam</a></li>
+{% endblock nav_links_fix %}
+
+
+{% block content %}
+
+  <header class="hero-header">
+    <div class="hero-img_wrapper">
+      <img src="{% static 'images/apiterapia_hose_hero_img.jpg' %}" alt="" style="width: 100%; height: 100%;">
+    </div>
+
+    <div class="hero-text__wrapper">
+      <h1 class="hero-title">Apiterapia</h1>
+      <div class="overFlow__wrap">
+        <h3 class="hero-subtitle">Skúste našu apiterapiu</h3>
+      </div>
+    </div>
+
+    <div class="bottom-container">
+      <div class="text-wrapper__bottom_box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati eum modi, ad esse praesentium deserunt, at dolore aspernatur, voluptatum similique ut reprehenderit repudiandae sit laboriosam dolorum quibusdam architecto tempora officia?</p>
+        <a href="#api-info" class="btn bottom-btn-read__more">čítať viac</a>
+      </div>
+    </div>
+   
+  </header>
+
+  <main>
+    <!-- [LIGHTBOX CONTAINER] -->
+    <div id="lb-back">
+      <div class="cancel-lb">zatvoriť galeriu</div>
+      <div id="arr__left" class="arrows __1"><div class="arrow__dot arrow__dot-left"></div></div>
+      <div id="arr__right" class="arrows __2"><div class="arrow__dot arrow__dot-right"></div></div>
+      <div id="lb-img">
+
+      </div>
+    </div>
+    <section class="main__section-wrapper">
+      <section class="gallery-sec">
+        <h1 class="gallery-sec__title">Ako to u nás vyzerá ?</h1>
+        <h3 class="gallery-sec__subtitle">pozrite si našu galériu</h3>
+
+        <div class="gallery-container">
+          <div class="gallery-wrapper">
+            <div class="row row__1">
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/apiDom_zboku.jpg' %}" class="zoomD" alt="" data-img_num="1">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/apiDom.jpg' %}" class="zoomD" alt="" data-img_num="2">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/novy_ul.jpg' %}" class="zoomD" alt="" data-img_num="3">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/beekeeping-4232534_1920 (1).jpg' %}" class="zoomD" alt="" data-img_num="4">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/novy_ul1.jpg' %}" class="zoomD" alt="" data-img_num="5">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/apiDom_zboku.jpg' %}" class="zoomD" alt="" data-img_num="6">
+              </div>
+            </div>
+            <div class="row row__2">
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/novy_ul3.jpg' %}" class="zoomD" alt="" data-img_num="7">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/apiDom_zboku.jpg' %}" class="zoomD" alt="" data-img_num="8">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/hero_img.jpg' %}" class="zoomD" alt="" data-img_num="9">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/vcely_na_ule.jpg' %}" class="zoomD" alt="" data-img_num="10">
+              </div>
+              <div class="gallery-img__wrapper">
+                <img src="{% static 'images/apiDom_dnu1.jpg' %}" class="zoomD" alt="" data-img_num="11">
+              </div>
+              <div class="gallery-img__wrapper" >
+                <img src="{% static 'images/hero_img.jpg' %}" class="zoomD" alt="" data-img_num="12">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="info__order-sec">
+
+        <div class="container main_container__order-sec">
+          <div class="order__wrapper">
+            <h1 class="title__order">Ako sa u nás objednať</h1>
+            <p class="paragraph__order">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, sed repudiandae qui temporibus molestias adipisci quis ducimus delectus accusantium recusandae harum error eligendi saepe laudantium maiores in perferendis quae velit.</p>
+            <a href="{% url 'contact_page' %}" class="btn btn__order_api">Objednať sa</a>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="api__info-sec" id="api-info">
+
+        <div class="main__wrapper">
+          <div class="row__1">
+            <article>
+              <h1>Čo je Apiterapia ?</h1>
+              <p>Ide o liečebno-relaxačnú terapiu v špeciálnom drevenom domčeku. Na úľoch vyskladaných ako posteľ sa leží a počas terapie sa dýcha príjemné teplo, ktoré produkujú včely. Počas celej terapie v api-domčeku nedochádza ku priamemu kontaktu so včelami, pretože tie majú umožnený bežný pobyt mimo domček. Odporúča sa ležať v rozsahu 25 až 30 minút. 
+              Dýchanie včelieho vzduchu je terapia, ktorá využíva liečivý vzduch v úli a priamo ten sa inhaluje. Dýchanie je najjednoduchšou a zároveň najprirodzenejšou cestou, ako sa dostane účinná látka veľmi rýchlo do krvného obehu. K dispozícii od mája do konca septembra.</p>
+            </article>
+          </div>
+          <div class="line"></div>
+          <div class="row__2">
+            <div class="articles__wrapper">
+              <article class="artic__1">
+                <h3>Pobyt v apidomčeku pomáha..</h3>
+                <p>Pobyt v api-domčeku pomôže keď vás trápi: alergia, arytmia srdca, astma, bolesti kĺbov a chrbta, bronchitída, depresie, chronické zápaly, liečba zlomenín, liečba vysokého a nízkeho krvného tlaku, migrény a iné bolesti hlavy, náchylnosti k infekciám, oslabenie imunity, pooperačné stavy.</p>
+              </article>
+              <article class="artic__2">
+                <h3>Aký je vzduch v apidomčeku ?</h3>
+                <p>Vzduch v úli obsahuje vysokú vlhkosť, éterické oleje, tekuté voskové čiastočky, slinný sekrét včiel, aerosóly z flavonoidov a propolisu, stopové prvky, enzýmy, cholín, včelami vyprodukované rastlinné hormóny a dosahuje teplotu okolo 36 °C.</p>
+              </article>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+    </section>
+
+
+  </main>
+
+
+{% endblock content %}
+
+
+{% block script_content %}
+
+
+  <script>
+    let lightBoxBack = document.querySelector('#lb-back');
+    var isClickedArrow = false
+
+    // // This function will show the image in the lightbox
+    var zoomImg = function () {
+      // Create image clone
+      var clone = this.childNodes;  //get parent's child (image)
+      clone = clone[1].cloneNode(); //set the child to image
+      clone.classList.remove("zoomD");
+      
+      //Put clone into lightbox
+      var lb = document.getElementById("lb-img");
+      lb.innerHTML = "";
+      lb.appendChild(clone);
+      
+      // Show lightbox
+      lb = document.getElementById("lb-back");
+      lb.classList.add("show");
+
+      let numOfImg = clone.getAttribute("data-img_num")
+      //console.log(numOfImg);
+      
+    };
+    //main gallery func
+    window.addEventListener("load", function(){
+      let imagesWrapper = document.querySelectorAll(".gallery-img__wrapper ");      
+      if (imagesWrapper.length>0) {
+        for (var parentOfImage of imagesWrapper) {
+          parentOfImage.addEventListener("click", zoomImg);
+        }
+      }
+      // arrow right
+      document.getElementById("arr__right").addEventListener("click", (e)=>{
+        let images = document.querySelectorAll("[data-img_num]"); 
+        let currentImgNum = images[0].attributes[3].value;
+        let nextImgNum = parseInt(currentImgNum) + 1;
+        
+        images.forEach(element => {
+          //console.log(element.attributes[3].value)
+          if(element.attributes[3].value === String(nextImgNum)){
+            let newImg = element.cloneNode();
+            //Put newImg element into lightbox
+            var lb = document.getElementById("lb-img");
+            lb.innerHTML = "";
+            lb.appendChild(newImg);
+          };
+          if(element.attributes[3].value === '12'){
+            nextImgNum = 1;
+          };
+        });
+      });
+
+      // arrow left
+      document.getElementById("arr__left").addEventListener("click", (e)=>{
+        let images = document.querySelectorAll("[data-img_num]"); 
+        let currentImgNum = images[0].attributes[3].value;
+        let nextImgNum = parseInt(currentImgNum) - 1;
+
+        if (nextImgNum === 1){
+          nextImgNum = 12;
+        };
+
+
+        images.forEach(element => {
+          //console.log(element.attributes[3].value)
+          if(element.attributes[3].value === String(nextImgNum)){
+            let newImg = element.cloneNode();
+            //Put newImg element into lightbox
+            var lb = document.getElementById("lb-img");
+            lb.innerHTML = "";
+            lb.appendChild(newImg);
+          };  
+
+          if(element.attributes[3].value === '0'){
+            nextImgNum = 12;
+          };
+        });
+      });
+
+      // close gallery btn
+      document.querySelector(".cancel-lb").addEventListener("click", function(){
+        document.querySelector("#lb-back").classList.remove("show");
+      });
+      window.addEventListener("scroll", function(){
+        if(document.querySelector("#lb-back").classList.contains("show")){
+          document.querySelector("#lb-back").classList.remove("show");
+        };
+      });
+
+
+      //header animation
+      let tweenAnimFlow = gsap.timeline();
+      tweenAnimFlow.fromTo(".hero-title", {
+        opacity: 0,
+        scale: 0
+      },{
+        duration: 0.2,
+        opacity: 1,
+        scale: 1,
+        letterSpacing: '30px'
+      });
+      tweenAnimFlow.to(".hero-subtitle", {
+        duration: 1,
+        y:0,
+      });
+
+    });
+
+  </script>
+{% endblock script_content %}
