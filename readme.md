@@ -2,7 +2,7 @@
 
 > This is my first larger project in Django framework
 
-before you run the application, make sure that you have installed - python django
+before you run the application, make sure that you have installed - **python django**
 
 if you don't have installed it, then run this command
 ```bash
